@@ -31,32 +31,53 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+        <h3>SYNOPSIS</h3>
+<p>To write a string, a formatted string, a number and a formula to the first worksheet in an Excel workbook called ruby.xlsx:</p>
+<pre><code>
+    require 'write_xlsx'
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+    # Create a new Excel workbook
+    workbook = WriteXLSX.new('ruby.xlsx')
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+    # Add a worksheet
+    worksheet = workbook.add_worksheet
+
+    #  Add and define a format
+    format = workbook.add_format
+    format.set_bold
+    format.set_color('red')
+    format.set_align('center')
+
+    # Write a formatted and unformatted string, row and column notation.
+    col = row = 0
+    worksheet.write(row, col, 'Hi Excel!', format)
+    worksheet.write(1,   col, 'Hi Excel!')
+
+    # Write a number and a formula using A1 notation
+    worksheet.write('A3', 1.2345)
+    worksheet.write('A4', '=SIN(PI()/4)')
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h3>Description</h3>
+<p>The Excel::Writer::XLSX module can be used to create an Excel file in the 2007+ XLSX format.</p>
+<p>The XLSX format is the Office Open XML (OOXML) format used by Excel 2007 and later.</p>
+<p>Multiple worksheets can be added to a workbook and formatting can be applied to cells. Text, numbers, and formulas can be written to the cells.</p>
+<p>This module cannot, as yet, be used to write to an existing Excel XLSX file.</p>
 
-<h3>Designer Templates</h3>
+<h3>write_xlsx and writeexcel
+<p>write_xlsx uses the same interface as the
+<a href="https://github.com/cxn03651/writeexcel">writeexcel</a>
+gem which produces an Excel file in binary XLS format.</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>write_xlsx supports all of the features of writeexcel and in some cases has more functionality.
+For more details see "Compatibility with writeexcel".</p>
 
-<h3>Rather Drive Stick?</h3>
+<p>The main advantage of the XLSX format over the XLS format is that it allows a larger number of rows and columns in a worksheet.
+The XLSX file format also produces much smaller files than the XLS file format.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
 
-<h3>Authors and Contributors</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
 
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
       </section>
     </div>
 
@@ -68,7 +89,7 @@ $ git checkout gh-pages
       </footer>
     </div>
 
-    
+
 
   </body>
 </html>
